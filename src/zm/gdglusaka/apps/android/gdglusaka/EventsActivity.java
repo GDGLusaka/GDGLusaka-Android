@@ -2,12 +2,14 @@ package zm.gdglusaka.apps.android.gdglusaka;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
-public class EventsActivity extends SherlockActivity implements ActionBar.TabListener {
+public class EventsActivity extends SherlockFragmentActivity implements ActionBar.TabListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +19,7 @@ public class EventsActivity extends SherlockActivity implements ActionBar.TabLis
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		
-		actionBar.setNavigationMode(actionBar.NAVIGATION_MODE_TABS);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		ActionBar.Tab upcoming = actionBar.newTab();
 		upcoming.setText(R.string.upcoming);
@@ -44,7 +46,8 @@ public class EventsActivity extends SherlockActivity implements ActionBar.TabLis
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		
+		EventsFragment eventsFragment = new EventsFragment();
+		ft.replace(R.id.fragFrame, eventsFragment);
 	}
 
 	@Override
